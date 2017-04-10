@@ -1,0 +1,77 @@
+﻿#include "module.h"
+#include "ControllerBase.h"
+#include "ViewBase.h"
+
+Module::Module(const std::string &strName)
+:m_bInited(false)
+{
+}
+
+Module::~Module(void)
+{
+}
+
+//bool PluginInstance::Load()
+//{
+//	return false;
+//}
+//
+//bool PluginInstance::UnLoad()
+//{
+//	return false;
+//}
+//
+//std::string PluginInstance::GetFileName() const
+//{
+//	return "";
+//}
+//
+//std::string PluginInstance::GetDisplayName() const
+//{
+//	return "";
+//}
+
+bool Module::Init()
+{
+	ControllerSharedPtr controler(CreateController());
+	m_pController = controler;
+	if (!m_pController)
+	{
+		LOGERR("Create Controller failed");
+		return -1;
+	}
+
+	ViewSharedPtr view(CreateView());
+	m_pView = view;
+	if (!m_pView)
+	{
+		LOGERR("Create View failed");
+		return -1;
+	}
+
+	m_pView->AttachController(m_pController);
+
+	if (m_pController)
+	{
+		m_pController->Init();
+	}
+
+	if (m_pView)
+	{
+		m_pView->Init();
+	}
+	m_bInited = true;
+	return true;
+}
+
+bool Module::Show()
+{
+	if (!m_bInited)
+	{
+		Init();
+	}
+
+	//跳转到该模块负责的默认界面
+	m_pView->Navigate();
+	return　true;
+}

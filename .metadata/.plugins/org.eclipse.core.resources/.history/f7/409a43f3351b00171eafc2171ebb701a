@@ -1,0 +1,47 @@
+﻿#pragma once
+
+#include "Export.h"
+#include <unordered_map>
+
+class Module;
+class DynamicLib;
+
+using std::string;
+class PLUGINCORE_API PluginManager
+{
+    typedef shared_ptr<Module> ModuleSharedPtr;
+    typedef shared_ptr<DynamicLib> DynamicLibrarySharedPtr;
+public:
+	static PluginManager &GetInstance();
+
+	//注册插件
+	void registerModule(const string &moduleName);
+
+	//反注册
+	void unRegisterModule(const string &moduleName);
+
+	bool LoadAll();
+
+	int Load(const string &strName,int &errCode);
+
+	bool LoadModule(const string &strName, ModuleSharedPtr pPlugin);
+
+	bool UnLoadAll();
+
+	bool UnLoad(const string &strName);
+
+	bool UnLoadModule(const string &strName);
+
+	bool ShowApp(const std::string &strAppName);
+private:
+	PluginManager(void);
+	~PluginManager(void);
+	PluginManager(const PluginManager &rhs);
+	const PluginManager &operator=(const PluginManager &rhs);
+
+	unordered_map<string, ModuleSharedPtr> m_registeredModules;  //已注册插件模块
+
+    unordered_map<string,DynamicLibrarySharedPtr> m_registeredPluginLibs;  //插件模块句柄
+
+};
+

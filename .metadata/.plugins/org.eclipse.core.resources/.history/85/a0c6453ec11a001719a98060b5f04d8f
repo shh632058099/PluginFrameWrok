@@ -1,0 +1,31 @@
+﻿#include "module.h"
+
+Module::Module(const std::string &strName)
+:m_pController(NULL),
+ m_pView(NULL)
+{
+}
+
+Module::~Module(void)
+{
+}
+
+//bool PluginInstance::Load()
+//{
+//	return false;
+//}
+//
+//bool PluginInstance::UnLoad()
+//{
+//	return false;
+//}
+//
+//std::string PluginInstance::GetFileName() const
+//{
+//	return "";
+//}
+//
+//std::string PluginInstance::GetDisplayName() const
+//{
+//	return "";
+//}

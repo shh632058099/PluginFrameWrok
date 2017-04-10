@@ -1,0 +1,29 @@
+/*
+ * View.cpp
+ *
+ *  Created on: 2017-4-6
+ *      Author: win7
+ */
+
+#include "View.h"
+#include "log.h"
+
+CView::CView()
+{
+	// TODO Auto-generated constructor stub
+
+}
+
+CView::~CView()
+{
+	// TODO Auto-generated destructor stub
+}
+
+bool CView::Init()
+{
+	LOGDBG("View has been init");
+	return true;
+}
+
+bool CView::Navigate() {
+}

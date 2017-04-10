@@ -1,0 +1,20 @@
+/*
+ * View.h
+ *
+ *  Created on: 2017-4-6
+ *      Author: win7
+ */
+
+#ifndef VIEW_H_
+#define VIEW_H_
+
+#include "ViewBase.h"
+
+class CView : public CViewBase
+{
+public:
+	CView();
+	virtual ~CView();
+};
+
+#endif /* VIEW_H_ */

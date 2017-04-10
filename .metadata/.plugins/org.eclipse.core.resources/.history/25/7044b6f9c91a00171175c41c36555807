@@ -1,0 +1,24 @@
+/*
+ * Controller.cpp
+ *
+ *  Created on: 2017-4-6
+ *      Author: win7
+ */
+
+#include "Controller.h"
+#include "log.h"
+
+CController::CController() {
+	// TODO Auto-generated constructor stub
+
+}
+
+CController::~CController() {
+	// TODO Auto-generated destructor stub
+}
+
+bool CController::Init()
+{
+	LOGDBG("Controller has been init");
+	return true;
+}

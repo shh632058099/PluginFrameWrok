@@ -1,0 +1,25 @@
+﻿#pragma once
+
+#include <string>
+#include "module.h"
+
+class ShapePlugin : public Module
+{
+public:
+	explicit ShapePlugin(const std::string &strName);
+	virtual ~ShapePlugin(void);
+
+	virtual bool Load();
+
+	virtual bool UnLoad();
+
+	//返回插件名字，带后缀，如dll等
+	virtual std::string GetFileName() const;
+
+	//返回插件的名字，不带后缀
+	virtual std::string GetDisplayName() const;
+
+	virtual CControllerBase *CreateController() = 0;
+
+	virtual CViewBase* CreateView() = 0;
+};

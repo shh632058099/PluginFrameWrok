@@ -1,0 +1,20 @@
+/*
+ * ControllerBase.cpp
+ *
+ *  Created on: 2017-4-6
+ *      Author: win7
+ */
+
+#include "ControllerBase.h"
+
+CControllerBase::CControllerBase()
+{
+	// TODO Auto-generated constructor stub
+
+}
+
+CControllerBase::~CControllerBase()
+{
+	// TODO Auto-generated destructor stub
+}
+

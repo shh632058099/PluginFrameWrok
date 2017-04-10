@@ -1,0 +1,26 @@
+10:55:00 **** Build of configuration Default for project PluginCore ****
+make all 
+D:/qnx660/host/win32/x86/usr/bin/make -j 1 -Carm -fMakefile all
+make[1]: Entering directory `E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm'
+D:/qnx660/host/win32/x86/usr/bin/make -j 1 -Cso-le-v7 -fMakefile all
+make[2]: Entering directory `E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm/so-le-v7'
+d:/qnx660/host/win32/x86/usr/bin/qcc -Vgcc_ntoarmv7 -c -Os -Wc,-Wall          -DNDEBUG    -I. -IE:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm/so-le-v7 -IE:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm -IE:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore -ID:\KanziWorkspace_3_2_4_474_92176\Engine\libraries\common\boost\include -Id:/qnx660/target/qnx6/usr/include       -EL      -shared     -DVARIANT_so -DVARIANT_le -DVARIANT_v7 -DBUILDENV_qss   E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/ControllerBase.cpp 
+d:/qnx660/host/win32/x86/usr/bin/qcc -Vgcc_ntoarmv7 -c -Os -Wc,-Wall          -DNDEBUG    -I. -IE:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm/so-le-v7 -IE:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm -IE:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore -ID:\KanziWorkspace_3_2_4_474_92176\Engine\libraries\common\boost\include -Id:/qnx660/target/qnx6/usr/include       -EL      -shared     -DVARIANT_so -DVARIANT_le -DVARIANT_v7 -DBUILDENV_qss   E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/DynamicLib.cpp 
+d:/qnx660/host/win32/x86/usr/bin/qcc -Vgcc_ntoarmv7 -c -Os -Wc,-Wall          -DNDEBUG    -I. -IE:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm/so-le-v7 -IE:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm -IE:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore -ID:\KanziWorkspace_3_2_4_474_92176\Engine\libraries\common\boost\include -Id:/qnx660/target/qnx6/usr/include       -EL      -shared     -DVARIANT_so -DVARIANT_le -DVARIANT_v7 -DBUILDENV_qss   E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/PluginManager.cpp 
+d:/qnx660/host/win32/x86/usr/bin/qcc -Vgcc_ntoarmv7 -c -Os -Wc,-Wall          -DNDEBUG    -I. -IE:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm/so-le-v7 -IE:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm -IE:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore -ID:\KanziWorkspace_3_2_4_474_92176\Engine\libraries\common\boost\include -Id:/qnx660/target/qnx6/usr/include       -EL      -shared     -DVARIANT_so -DVARIANT_le -DVARIANT_v7 -DBUILDENV_qss   E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/ViewBase.cpp 
+d:/qnx660/host/win32/x86/usr/bin/qcc -Vgcc_ntoarmv7 -c -Os -Wc,-Wall          -DNDEBUG    -I. -IE:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm/so-le-v7 -IE:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm -IE:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore -ID:\KanziWorkspace_3_2_4_474_92176\Engine\libraries\common\boost\include -Id:/qnx660/target/qnx6/usr/include       -EL      -shared     -DVARIANT_so -DVARIANT_le -DVARIANT_v7 -DBUILDENV_qss   E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/module.cpp 
+d:/qnx660/host/win32/x86/usr/bin/rm -f  E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm/so-le-v7/libPluginCore.so
+d:/qnx660/host/win32/x86/usr/bin/qcc -Vgcc_ntoarmv7 -Wl,--no-keep-memory  -lang-c++ -shared -Wl,-hlibPluginCore.so.1 -fPic -lang-c++    -o E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm/so-le-v7/libPluginCore.so    ControllerBase.o    DynamicLib.o    PluginManager.o    ViewBase.o    module.o   -L . -L d:/qnx660/target/qnx6/armle-v7/lib -L d:/qnx660/target/qnx6/armle-v7/usr/lib  -Wl,--rpath-link . -Wl,--rpath-link d:/qnx660/target/qnx6/armle-v7/lib -Wl,--rpath-link d:/qnx660/target/qnx6/armle-v7/usr/lib       -EL            
+d:\qnx660\host\win32\x86\usr\bin\arm-unknown-nto-qnx6.6.0eabi-ar: creating E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm/so-le-v7/libPluginCoreS.a
+d:/qnx660/host/win32/x86/usr/bin/rm -f  E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm/so-le-v7/libPluginCoreS.a
+d:/qnx660/host/win32/x86/usr/bin/qcc -Vgcc_ntoarmv7 -a  E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm/so-le-v7/libPluginCoreS.a ControllerBase.o DynamicLib.o PluginManager.o ViewBase.o module.o     -EL     
+make[2]: Leaving directory `E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm/so-le-v7'
+make[1]: Leaving directory `E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm'
+"d:\\qnx660\\host\\win32\\x86\\usr\\bin\\make.exe" -k CPULIST=arm "EXTRA_SUFFIXES=cpp " all --file=C:/Temp/QMakefile14915337067083096002359506105948.tmp 
+d:/qnx660/host/win32/x86/usr/bin/make.exe -j 1 -Carm -fMakefile all
+make.exe[1]: Entering directory `E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm'
+d:/qnx660/host/win32/x86/usr/bin/make.exe -j 1 -Cso-le-v7 -fMakefile all
+make.exe[2]: Entering directory `E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm/so-le-v7'
+make.exe[2]: Nothing to be done for `all'.
+make.exe[2]: Leaving directory `E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm/so-le-v7'
+make.exe[1]: Leaving directory `E:/LocalSVN/checkout/software/PluginFrameWrok/PluginCore/arm'

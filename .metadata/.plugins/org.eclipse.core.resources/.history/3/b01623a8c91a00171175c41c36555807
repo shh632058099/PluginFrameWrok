@@ -1,0 +1,20 @@
+/*
+ * Controller.h
+ *
+ *  Created on: 2017-4-6
+ *      Author: win7
+ */
+
+#ifndef CONTROLLER_H_
+#define CONTROLLER_H_
+
+#include "ControllerBase.h"
+
+class CController : public CControllerBase
+{
+public:
+	CController();
+	virtual ~CController();
+};
+
+#endif /* CONTROLLER_H_ */

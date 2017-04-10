@@ -1,0 +1,16 @@
+﻿#include "ShapeExport.h"
+#include "ShapePlugin.h"
+#include "PluginManager.h"
+
+static Module *pPlugin = NULL;
+
+ Module* createPlugin()
+ {
+	 pPlugin = new ShapePlugin("shapefile");
+	 return pPlugin;
+ }
+
+void StopPlugin()
+{
+	delete pPlugin;
+}

@@ -1,0 +1,140 @@
+﻿#include "PluginManager.h"
+#include "module.h"
+#include "DynamicLib.h"
+#include "log.h"
+
+PluginManager::PluginManager(void)
+{
+	m_registeredModules.clear();
+	m_registeredPluginLibs.clear();
+}
+
+PluginManager::~PluginManager(void)
+{
+    m_registeredModules.clear();
+    m_registeredPluginLibs.clear();
+}
+
+void PluginManager::registerModule(const string &moduleName)
+{
+    int errCode = 0;
+    Load(moduleName, errCode);
+    LOGDBG("register module name[%s]", moduleName.c_str());
+
+}
+
+void PluginManager::unRegisterModule(const string &moduleName)
+{
+    UnLoad(moduleName);
+}
+
+
+PluginManager &PluginManager::GetInstance()
+{
+	static PluginManager instance;
+	return instance;
+}
+
+int PluginManager::Load(const string &strName,int &errCode)
+{
+    int nRet = 0;
+	auto iter = m_registeredPluginLibs.find(strName);
+	if (iter == m_registeredPluginLibs.end())	//不存在就需要插入
+	{
+		DynamicLibrarySharedPtr pLib(new DynamicLib);
+		if (pLib)
+		{
+			pLib->LoadLib(strName.data());
+			m_registeredPluginLibs.insert(make_pair(strName, pLib));
+			START_PLUGIN_FUN pFun = (START_PLUGIN_FUN)pLib->GetSymbolAddress("createPlugin");
+			if (pFun != NULL)
+			{
+				ModuleSharedPtr pPlugin(pFun());
+				LoadModule(strName, pPlugin);
+				errCode = 0;
+				return nRet;
+			}
+			else
+			{
+			    nRet = -1;
+			    errCode = -1;
+			}
+		}
+		else
+		{
+		    nRet = -1;
+            errCode = -1;
+		}
+	}
+	else		//如果存在，在插件列表里面寻找名字是strName的插件
+	{
+	    errCode = 1;
+	    nRet = 1;
+	}
+	return nRet;
+}
+
+bool PluginManager::LoadModule(const string &strName, ModuleSharedPtr pPlugin)
+{
+	m_registeredModules.insert(make_pair(strName, pPlugin));
+	return true;
+}
+
+bool PluginManager::UnLoadAll()
+{
+	return true;
+}
+
+bool PluginManager::UnLoad(const string &strName)
+{
+
+    auto iter = m_registeredPluginLibs.find(strName);
+    if ( iter != m_registeredPluginLibs.end() )
+    {
+        DynamicLibrarySharedPtr pluginLib = iter->second;
+        if ( pluginLib )
+        {
+            STOP_PLUGIN_FUN pFun = (STOP_PLUGIN_FUN)pluginLib->GetSymbolAddress("destroyModule");
+            if (pFun != NULL)
+            {
+                pFun();
+            }
+
+            pluginLib->FreeLib();
+
+            //然后从列表中删除
+            m_registeredPluginLibs.erase(iter);
+            return UnLoadModule(strName);
+        }
+	}
+
+	return false;
+}
+
+bool PluginManager::UnLoadModule(const string &strName)
+{
+    auto it = m_registeredModules.find(strName);
+    if ( it != m_registeredModules.end())
+    {
+        m_registeredModules.erase(it);
+        return true;
+    }
+	return false;
+}
+
+bool PluginManager::ShowApp(const std::string& strAppName)
+{
+	bool bRet = false;
+	auto it = m_registeredModules.find(strAppName);
+	if (it != m_registeredModules.end())
+	{
+		it->second->Show();
+		bRet = true;
+		LOGDBG("Show App[%s]", strAppName.c_str());
+	}
+	else
+	{
+		LOGERR("Can not find app[%s]", strAppName.c_str());
+	}
+	return bRet;
+}

@@ -1,0 +1,55 @@
+﻿#include "module.h"
+#include "ControllerBase.h"
+#include "ViewBase.h"
+
+Module::Module(const std::string &strName)
+{
+}
+
+Module::~Module(void)
+{
+	if (m_pView != NULL)
+	{
+		delete m_pView;
+		m_pView = NULL;
+	}
+
+	if (m_pController != NULL)
+	{
+		delete m_pController;
+		m_pController = NULL;
+	}
+}
+
+//bool PluginInstance::Load()
+//{
+//	return false;
+//}
+//
+//bool PluginInstance::UnLoad()
+//{
+//	return false;
+//}
+//
+//std::string PluginInstance::GetFileName() const
+//{
+//	return "";
+//}
+//
+//std::string PluginInstance::GetDisplayName() const
+//{
+//	return "";
+//}
+
+bool Module::Init()
+{
+	if (m_pController)
+	{
+		m_pController->Init();
+	}
+
+	if (m_pView)
+	{
+		m_pView->Init();
+	}
+}

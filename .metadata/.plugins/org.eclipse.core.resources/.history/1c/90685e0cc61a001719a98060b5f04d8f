@@ -1,0 +1,24 @@
+/*
+ * ViewBase.cpp
+ *
+ *  Created on: 2017-4-6
+ *      Author: win7
+ */
+
+#include "ViewBase.h"
+#include "ControllerBase.h"
+
+CViewBase::CViewBase(ControllerSharedPtr pController)
+:m_pController(pController)
+{
+	// TODO Auto-generated constructor stub
+
+}
+
+CViewBase::~CViewBase()
+{
+	// TODO Auto-generated destructor stub
+}
+
+bool CViewBase::Init() {
+}

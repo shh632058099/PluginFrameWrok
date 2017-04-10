@@ -1,0 +1,48 @@
+﻿#pragma once
+
+#include "Export.h"
+
+#include "ControllerBase.h"
+#include "ViewBase.h"
+
+class PLUGINCORE_API Module
+{
+public:
+	explicit Module(const std::string &strName);
+	virtual ~Module(void);
+
+	//加载模块
+	virtual bool Load() = 0;
+
+	//卸载模块
+	virtual bool UnLoad() = 0;
+
+	//返回插件名字，带后缀，如dll等
+	virtual std::string GetFileName() const = 0;
+
+	//返回插件的名字，不带后缀
+	virtual std::string GetDisplayName() const = 0;
+
+private:
+	virtual CControllerBase *CreateController() = 0;
+
+	virtual CViewBase* CreateView() = 0;
+private:
+	Module(const Module &rhs);
+	const Module &operator=(const Module &rhs);
+
+	bool Init();
+
+	bool Show();
+private:
+	ControllerSharedPtr m_pController;
+
+	ViewSharedPtr m_pView;
+
+	bool m_bInited;
+};
+
+//插件加载和卸载时调用的函数
+typedef Module *( *START_PLUGIN_FUN )();
+typedef void( *STOP_PLUGIN_FUN )();
+

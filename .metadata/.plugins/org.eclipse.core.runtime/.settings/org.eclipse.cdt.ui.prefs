@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+editor_folding_default_comments=true
+editor_folding_default_functions=true
+editor_folding_default_headers=true
+editor_folding_default_macros=true
+editor_folding_default_methods=true
+editor_folding_default_structures=true
+editor_folding_preprocessor_enabled=true
+editor_folding_statements=true
+spelling_locale_initialized=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true
+wizard.preferred.toolchains=com.qnx.qcc.toolChain com.qnx.qcc.toolChain.exe.coverage com.qnx.qcc.toolChain.sharedLib.coverage com.qnx.qcc.toolChain.staticLib.coverage

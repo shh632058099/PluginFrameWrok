@@ -1,0 +1,109 @@
+﻿#include "DynamicLib.h"
+
+DynamicLib::DynamicLib(void)
+{
+	m_hDynLib = NULL;
+}
+
+DynamicLib::~DynamicLib(void)
+{
+	if (m_hDynLib != NULL)
+	{
+		FreeLib();
+	}
+}
+
+const char* DynamicLib::GetName() const
+{
+	return m_strLibName.c_str();
+}
+
+#if defined(__unix__) || defined(unix)
+#include <dlfcn.h>
+
+bool DynamicLib::LoadLib(const char* strLibName)
+{
+    if ( NULL == strLibName )
+    {
+        return false;
+    }
+	std::string strName = "/coagent/lib";
+	strName += strLibName;
+	strName += ".so.1";
+	m_hDynLib = dlopen(strName.c_str(), RTLD_LAZY);
+	if( m_hDynLib == NULL )
+	{
+		LOGERR("open dll library[%s] failed", strName.c_str());
+		return false;
+	}
+	m_strLibName = strLibName;
+	return true;
+}
+
+void* DynamicLib::GetSymbolAddress(const char* strSymbolName) const
+{
+	void	*pSymbol = NULL;
+
+	if (m_hDynLib != NULL)
+	{
+		pSymbol = dlsym(m_hDynLib,strSymbolName);
+	}
+
+	return pSymbol;
+}
+
+void DynamicLib::FreeLib()
+{
+	if (m_hDynLib != NULL)
+	{
+		dlclose(m_hDynLib);
+		m_hDynLib = NULL;
+	}
+	m_strLibName.clear();
+}
+
+#endif
+
+#ifdef _WIN32
+#include <Windows.h>
+
+bool DynamicLib::LoadLib(const char* strLibName)
+{
+	std::string strName = strLibName;
+	strName += ".dll";
+	m_hDynLib = LoadLibrary(strName.c_str());
+	if (m_hDynLib != NULL)
+	{
+		m_strLibName = strdup(strLibName);
+		return 1;
+	}
+
+	return 0;
+}
+
+void* DynamicLib::GetSymbolAddress(const char* strSymbolName) const
+{
+	if (m_hDynLib != NULL)
+	{
+		return (void*)GetProcAddress((HMODULE)m_hDynLib,strSymbolName);
+	}
+
+	return NULL;
+}
+
+void DynamicLib::FreeLib()
+{
+	if (m_hDynLib != NULL)
+	{
+		FreeLibrary((HMODULE)m_hDynLib);
+		m_hDynLib = NULL;
+	}
+
+	if (m_strLibName != NULL)
+	{
+		free(m_strLibName);
+		m_strLibName = NULL;
+	}
+}
+
+#endif

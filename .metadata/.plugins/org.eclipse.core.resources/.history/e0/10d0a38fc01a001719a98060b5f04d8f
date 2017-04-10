@@ -1,0 +1,18 @@
+/*
+ * ViewBase.h
+ *
+ *  Created on: 2017-4-6
+ *      Author: win7
+ */
+
+#ifndef VIEWBASE_H_
+#define VIEWBASE_H_
+
+class CViewBase
+{
+public:
+	CViewBase();
+	virtual ~CViewBase();
+};
+
+#endif /* VIEWBASE_H_ */

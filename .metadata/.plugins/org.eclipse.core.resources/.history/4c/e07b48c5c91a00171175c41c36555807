@@ -1,0 +1,18 @@
+/*
+ * View.cpp
+ *
+ *  Created on: 2017-4-6
+ *      Author: win7
+ */
+
+#include "View.h"
+
+CView::CView() {
+	// TODO Auto-generated constructor stub
+
+}
+
+CView::~CView() {
+	// TODO Auto-generated destructor stub
+}
+

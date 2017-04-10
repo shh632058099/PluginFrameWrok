@@ -1,0 +1,19 @@
+/*
+ * ControllerBase.h
+ *
+ *  Created on: 2017-4-6
+ *      Author: win7
+ */
+
+#ifndef CONTROLLERBASE_H_
+#define CONTROLLERBASE_H_
+
+class CControllerBase
+{
+public:
+	CControllerBase();
+	virtual ~CControllerBase();
+	virtual bool Init() = 0;
+};
+
+#endif /* CONTROLLERBASE_H_ */

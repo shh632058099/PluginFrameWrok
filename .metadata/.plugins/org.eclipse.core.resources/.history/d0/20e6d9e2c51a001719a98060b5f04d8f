@@ -1,0 +1,24 @@
+/*
+ * ViewBase.h
+ *
+ *  Created on: 2017-4-6
+ *      Author: win7
+ */
+
+#ifndef VIEWBASE_H_
+#define VIEWBASE_H_
+
+class CControllerBase;
+
+typedef std::shared_ptr<CViewBase> ViewSharedPtr;
+class CViewBase
+{
+public:
+	explicit CViewBase(CControllerBase *pController);
+	virtual ~CViewBase();
+	virtual bool Init();
+private:
+	CControllerBase *m_pController;
+};
+
+#endif /* VIEWBASE_H_ */

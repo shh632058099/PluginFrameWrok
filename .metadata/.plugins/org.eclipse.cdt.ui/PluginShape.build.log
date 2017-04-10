@@ -1,0 +1,8 @@
+"d:\\qnx660\\host\\win32\\x86\\usr\\bin\\make.exe" -k CPULIST=arm "EXTRA_SUFFIXES=cpp " all --file=C:/Temp/QMakefile14915317501906503095254056157697.tmp 
+d:/qnx660/host/win32/x86/usr/bin/make.exe -j 1 -Carm -fMakefile all
+make.exe[1]: Entering directory `E:/LocalSVN/checkout/software/PluginFrameWrok/PluginShape/arm'
+d:/qnx660/host/win32/x86/usr/bin/make.exe -j 1 -Cso-le-v7 -fMakefile all
+make.exe[2]: Entering directory `E:/LocalSVN/checkout/software/PluginFrameWrok/PluginShape/arm/so-le-v7'
+make.exe[2]: Nothing to be done for `all'.
+make.exe[2]: Leaving directory `E:/LocalSVN/checkout/software/PluginFrameWrok/PluginShape/arm/so-le-v7'
+make.exe[1]: Leaving directory `E:/LocalSVN/checkout/software/PluginFrameWrok/PluginShape/arm'

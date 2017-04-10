@@ -1,0 +1,17 @@
+#include <cstdlib>
+#include <stdio.h>
+
+#include "PluginManager.h"
+
+int main(int argc, char *argv[])
+{
+    PluginManager &pluManager = PluginManager::GetInstance();
+    printf("1\n");
+    pluManager.registerModule("PluginShape");
+    printf("2\n");
+    printf("3\n");
+
+    pluManager.ShowApp("PluginShape");
+    pluManager.unRegisterModule("PluginShape");
+	return EXIT_SUCCESS;
+}
